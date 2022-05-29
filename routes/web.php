@@ -12,12 +12,12 @@ use App\Http\Controllers\APIUserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
 
-
+*/
 
 Route::apiResource("users", APIUserController::class); // Les routes "users.*" de l'API
 
@@ -36,3 +36,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

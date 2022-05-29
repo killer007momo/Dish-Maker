@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Plat;
+use App\Models\Menu;
+use App\Models\Ingredient;
+
+use App\Models\Adresse;
 use Illuminate\Http\Request;
 
 class APIUserController extends Controller
@@ -14,9 +19,11 @@ class APIUserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
 
-   
+        $users = User::all();
+        $addresse = Adresse::all();
+
+        
         return response()->json($users);
        
     }
@@ -80,7 +87,7 @@ class APIUserController extends Controller
     $user->update([
         "name" => $request->name,
         "email" => $request->email,
-         "phone" => $request->phone ,
+        "phone" => $request->phone ,
         "password" => bcrypt($request->password)
     ]);
 

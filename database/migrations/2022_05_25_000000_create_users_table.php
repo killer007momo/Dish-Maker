@@ -19,12 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedBigInteger('adresse_id');
+            $table->unsignedBigInteger('adresse_id')->nullable();
             $table->string('phone')->unique();
             $table->rememberToken();
             $table->timestamps();
-
-            
             $table->foreign('adresse_id')->references('id')->on('adresses')->onDelete('cascade');
         });
     }
