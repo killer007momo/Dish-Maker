@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Menu;
+use App\Models\Adresse;
+use App\Models\Plat;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,7 +29,10 @@ class HomeController extends Controller
 
     {
         $users = user::all();
-        
-        return view('home',['users'=>$users]);
+        //$Ingredient = Ingredient::all();
+        $menu = Menu::all();
+        $plats = Plat::all();
+       // dd($menu);
+        return view('home',['users'=>$users,'plats'=>$plats,'menus'=>$menu]);
     }
 }

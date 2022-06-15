@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Plat;
+use App\Models\Menu;
+use App\Models\Ingredient;
+
+use App\Models\Adresse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class APIUserController extends Controller
 {
@@ -14,12 +20,15 @@ class APIUserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
 
-   
+        $users = User::all();
+       
+       // dd($users);
         return response()->json($users);
        
     }
+
+  
 
     /**
      * Store a newly created resource in storage.
@@ -33,6 +42,7 @@ class APIUserController extends Controller
         'name' => 'required|max:100',
         'email' => 'required|email|unique:users',
         'phone' => 'required|phone|unique:users',
+        'sexe' => 'required|max:100',
         'password' => 'required|min:8'
     ]);
 
@@ -41,6 +51,7 @@ class APIUserController extends Controller
         'name' => $request->name,
         'email' => $request->email,
         'phone' => $request->phone,
+        'sexe' => 'Homme',
         'password' => bcrypt($request->password)
     ]);
 
@@ -73,6 +84,7 @@ class APIUserController extends Controller
         'name' => 'required|max:100',
         'email' => 'required|email',
         'phone' => 'required|phone',
+        'sexe' => 'required|sexe',
         'password' => 'required|min:8'
     ]);
 
@@ -80,7 +92,8 @@ class APIUserController extends Controller
     $user->update([
         "name" => $request->name,
         "email" => $request->email,
-         "phone" => $request->phone ,
+        "phone" => $request->phone ,
+        "sexe" => 'Homme' ,
         "password" => bcrypt($request->password)
     ]);
 
