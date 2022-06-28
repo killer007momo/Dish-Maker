@@ -23,8 +23,10 @@ class User extends Authenticatable
         'email',
         'sexe',
         'password',
+        'hassignedhiscgu',
         'phone',
     ];
+    
     public function Adresse(){
 
         return  $this->belongsTo(Adresse::class);
@@ -33,6 +35,8 @@ class User extends Authenticatable
 
         return  $this->belongsTo(Plat::class);
     }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

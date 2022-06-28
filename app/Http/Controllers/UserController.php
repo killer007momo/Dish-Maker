@@ -54,6 +54,7 @@ class UserController extends Controller
         $user->email =  $request->email ;
         $user->phone = $request->phone ;
         $user->sexe =  $request->sexe ;
+        $user->hassignedhiscgu  = $request->hassignedhiscgu ;
         $user->adresse_id = 1 ;
         $user->password =  bcrypt($request->password) ;
 
@@ -95,6 +96,7 @@ class UserController extends Controller
         $user->email =  $request->email ;
         $user->phone = $request->phone ;
         $user->sexe =  $request->sexe ;
+        $user->hassignedhiscgu  = $request->hassignedhiscgu ;
         $user->password =  bcrypt($request->password) ;
 
         $user->save();

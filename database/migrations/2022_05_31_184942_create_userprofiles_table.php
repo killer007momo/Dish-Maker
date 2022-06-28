@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('userprofiles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('description');
+            $table->string('profilephotopath');
+            $table->string('specialities');
+            $table->boolean('confirmed');
+            $table->string('banierepath');
             $table->timestamps();
         });
     }

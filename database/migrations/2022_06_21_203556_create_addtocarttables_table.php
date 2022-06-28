@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plats', function (Blueprint $table) {
+        Schema::create('addtocarttables', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('menu_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('dish_id');
+            $table->unsignedBigInteger('cart_id');
+            $table->float('quantity');
             $table->timestamps();
-
-            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->foreign('dish_id')->references('id')->on('dishes')->onDelete('cascade');
+            $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plats');
+        Schema::dropIfExists('addtocarttables');
     }
 };

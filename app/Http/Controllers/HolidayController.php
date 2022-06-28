@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Adresse;
-
 use Illuminate\Http\Request;
+use App/Models/Holiday;
 
-class AdresseController extends Controller
+
+class HolidayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,10 @@ class AdresseController extends Controller
      */
     public function index()
     {
-       $adresse = Adresse::all();
-
-        return response()->json($adresse);
+         $holidays = Holiday::all();
+       
+       // dd($users);
+        return response()->json($holidays);
     }
 
     /**
@@ -25,9 +26,19 @@ class AdresseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $holiday = new Holiday();
+
+        $holiday->nom = $request->nom ;
+        $holiday->description = $request->description ;
+        $holiday->datedebut = $request->datedebut ;
+        $holiday->datefin =  $request->datefin ;
+        $holiday->menu_id =  $request->menu_id ;
+
+        $holiday->save();
+
+
     }
 
     /**
@@ -38,17 +49,20 @@ class AdresseController extends Controller
      */
     public function store(Request $request)
     {
-       $adresse = new Adresse();
+        
+          $holiday = new Hdoliday();
+        $holiday->description = $request->description ;
+        $holiday->name =  $request->name ;
+        $holiday->datedebut = $request->datedebut ;
+        $holiday->datedefin =  $request->datedefin ;
+        $holiday->menu_id = 1 ;
+     
 
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->s ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
-
-      $adresse->save();
-
+        $holiday->save();
+       
+        dd($holiday);
     }
+
     /**
      * Display the specified resource.
      *
@@ -80,16 +94,17 @@ class AdresseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-       $adresse =  Adresse::find($id);
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->adresse2 ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
+        $holiday =  Hdoliday::find($id);
+        $holiday->description = $request->description ;
+        $holiday->name =  $request->name ;
+        $holiday->datedebut = $request->datedebut ;
+        $holiday->datedefin =  $request->datedefin ;
+        $holiday->menu_id = 1 ;
+     
 
-      $adresse->save();
-      return response()->json($adresse);
+        $holiday->save();
+       
+        
     }
 
     /**
@@ -100,10 +115,11 @@ class AdresseController extends Controller
      */
     public function destroy($id)
     {
-         $adresse = Adresse::find($id) ;  
-         $adresse->delete();
+           // On supprime l'utilisateur
+       $holiday = holiday::find($id) ;  
+       $holiday->delete();
 
         // On retourne la réponse JSON
-         return response()->json();
+       return response()->json();
     }
 }

@@ -50,7 +50,7 @@ class PlatController extends Controller
         $plat->menu_id = $request->menu_id ;
         $plat->user_id = $request->user_id ;
         $user->save();
-         return response()->json();
+        return response()->json();
     }
 
     /**
@@ -88,8 +88,7 @@ class PlatController extends Controller
         $plat->menu_id = $request->menu_id ;
         $plat->user_id = $request->user_id ;
         $user->save();
-        
-         return response()->json();
+        return response()->json();
     }
 
     /**

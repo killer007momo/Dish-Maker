@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Adresse;
-
+use App\Models\Dish;
 use Illuminate\Http\Request;
 
-class AdresseController extends Controller
+class DishController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,8 @@ class AdresseController extends Controller
      */
     public function index()
     {
-       $adresse = Adresse::all();
-
-        return response()->json($adresse);
+        $dish = Dish::all();
+        return response()->json($dish);
     }
 
     /**
@@ -27,7 +24,7 @@ class AdresseController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -38,17 +35,25 @@ class AdresseController extends Controller
      */
     public function store(Request $request)
     {
-       $adresse = new Adresse();
+        $dish = new Dish();
+        $dish->description = $request->description ;
+        $dish->options =  $request->options ;
+        $dish->name = $request->name ;
+        $dish->price =  $request->price ;
+        $dish->ondemand  = $request->ondemand ;
+        $dish->labels = $request->labels ;
+        $dish->deliverytimestamp =  $request->deliverytimestamp ;
+        $dish->holiday_id = $request->holiday_id ;
+        $dish->user_id =  $request->user_id ;
+       
 
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->s ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
-
-      $adresse->save();
-
+        $dish->save();
+       // On crée un nouvel utilisateur
+        return response()->json();
+        dd($dish);
+       // On retourne les informations du nouvel utilisateur en JSON
     }
+
     /**
      * Display the specified resource.
      *
@@ -80,16 +85,22 @@ class AdresseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-       $adresse =  Adresse::find($id);
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->adresse2 ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
+        $dish = Dish::find($id);
 
-      $adresse->save();
-      return response()->json($adresse);
+        $dish->description = $request->description ;
+        $dish->options =  $request->options ;
+        $dish->name = $request->name ;
+        $dish->price =  $request->price ;
+        $dish->ondemand  = $request->ondemand ;
+        $dish->labels = $request->labels ;
+        $dish->deliverytimestamp =  $request->deliverytimestamp ;
+        $dish->holiday_id = $request->holiday_id ;
+        $dish->user_id =  $request->user_id ;
+       
+
+        $dish->save();
+          return response()->json();
+
     }
 
     /**
@@ -100,10 +111,10 @@ class AdresseController extends Controller
      */
     public function destroy($id)
     {
-         $adresse = Adresse::find($id) ;  
-         $adresse->delete();
+         $dish = Dish::find($id) ;  
+         $dish->delete();
 
         // On retourne la réponse JSON
-         return response()->json();
+       return response()->json();
     }
 }

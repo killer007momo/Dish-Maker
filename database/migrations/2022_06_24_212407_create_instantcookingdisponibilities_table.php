@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plats', function (Blueprint $table) {
+        Schema::create('instantcookingdisponibilities', function (Blueprint $table) {
+           
             $table->id();
-            $table->unsignedBigInteger('menu_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('userprofile_id')->nullable();
+            $table->string('entrydate');
             $table->timestamps();
-
-            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->foreign('userprofile_id')->references('id')->on('userprofiles')->onDelete('cascade');
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plats');
+        Schema::dropIfExists('instantcookingdisponibilities');
     }
 };

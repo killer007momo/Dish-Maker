@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers ;
 
-use App\Models\Adresse;
+use App\Models\Deliverychoices ;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request ;
 
-class AdresseController extends Controller
+class DeliverychoicesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class AdresseController extends Controller
      */
     public function index()
     {
-       $adresse = Adresse::all();
-
-        return response()->json($adresse);
+        $deliverychoices = Deliverychoices::all();
+        return response()->json($deliverychoices);
     }
 
     /**
@@ -38,17 +37,19 @@ class AdresseController extends Controller
      */
     public function store(Request $request)
     {
-       $adresse = new Adresse();
+       
+        $deliverychoice = new Deliverychoices();
 
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->s ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
+        $deliverychoice->dish_id = $request->dish_id ;
+        $deliverychoice->picturepath =  $request->picturepath ;
 
-      $adresse->save();
-
+        $deliverychoice->save();
+       // On crée un nouvel utilisateur
+        return response()->json();
+       // dd($deliverychoice);
+       // On retourne les informations du nouvel utilisateur en JSON
     }
+
     /**
      * Display the specified resource.
      *
@@ -80,16 +81,13 @@ class AdresseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-       $adresse =  Adresse::find($id);
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->adresse2 ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
+         $deliverychoice = Deliverychoices::find($id);
 
-      $adresse->save();
-      return response()->json($adresse);
+        $deliverychoice->dish_id = $request->dish_id ;
+        $deliverychoice->picturepath =  $request->picturepath ;
+
+        $deliverychoice->save();
+        return response()->json();
     }
 
     /**
@@ -100,10 +98,10 @@ class AdresseController extends Controller
      */
     public function destroy($id)
     {
-         $adresse = Adresse::find($id) ;  
-         $adresse->delete();
+         $deliverychoice = Deliverychoices::find($id) ;  
+         $deliverychoice->delete();
 
-        // On retourne la réponse JSON
+         // On retourne la réponse JSON
          return response()->json();
     }
 }

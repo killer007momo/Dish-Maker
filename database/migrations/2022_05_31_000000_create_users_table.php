@@ -17,13 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->boolean('hassignedhiscgu');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('sexe')->nullable();
             $table->unsignedBigInteger('adresse_id')->nullable();
             $table->string('phone')->unique();
+            
             $table->rememberToken();
             $table->timestamps();
+
             $table->foreign('adresse_id')->references('id')->on('adresses')->onDelete('cascade');
         });
     }

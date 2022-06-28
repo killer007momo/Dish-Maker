@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('description');
             $table->string('name');
-            $table->timestamps('datedebut');
-            $table->timestamps('datedefin');
+            $table->Date('datedebut');
+            $table->Date('datedefin');
             $table->unsignedBigInteger('menu_id')->nullable();
             
             $table->timestamps();

@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Adresse;
-
+use App\Models\Addtocarttable;
 use Illuminate\Http\Request;
 
-class AdresseController extends Controller
+class AddtocarttableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,9 @@ class AdresseController extends Controller
      */
     public function index()
     {
-       $adresse = Adresse::all();
+      $addtocarttables = Addtocarttable::all();
 
-        return response()->json($adresse);
+        return response()->json($addtocarttables); 
     }
 
     /**
@@ -38,17 +36,18 @@ class AdresseController extends Controller
      */
     public function store(Request $request)
     {
-       $adresse = new Adresse();
+       $addtocarttable = new Addtocarttable();
+      
+       $addtocarttable->dish_id = $request->dish_id ;
+       $addtocarttable->cart_id = $request->cart_id ;
+       $addtocarttable->quantity = $request->quantity ;
+      
 
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->s ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
-
-      $adresse->save();
+      $addtocarttable->save();
+       return response()->json();
 
     }
+
     /**
      * Display the specified resource.
      *
@@ -80,16 +79,14 @@ class AdresseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-       $adresse =  Adresse::find($id);
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->adresse2 ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
+       $addtocarttable = Addtocarttable::find($id);
+      
+       $addtocarttable->dish_id = $request->dish_id ;
+       $addtocarttable->cart_id = $request->cart_id ;
+       $addtocarttable->quantity = $request->quantity ;
 
-      $adresse->save();
-      return response()->json($adresse);
+       $addtocarttable->save();
+        return response()->json();
     }
 
     /**
@@ -100,10 +97,10 @@ class AdresseController extends Controller
      */
     public function destroy($id)
     {
-         $adresse = Adresse::find($id) ;  
-         $adresse->delete();
+         $addtocarttable = Addtocarttable::find($id) ;  
+         $addtocarttable->delete();
 
-        // On retourne la réponse JSON
+       // On retourne la réponse JSON
          return response()->json();
     }
 }

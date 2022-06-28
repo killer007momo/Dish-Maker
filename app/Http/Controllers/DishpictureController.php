@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Adresse;
-
+use App\Models\Dishpicture;
 use Illuminate\Http\Request;
 
-class AdresseController extends Controller
+class DishpictureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,9 @@ class AdresseController extends Controller
      */
     public function index()
     {
-       $adresse = Adresse::all();
+        $dishpicture = Dishpicture::all();
 
-        return response()->json($adresse);
+        return response()->json($dishpicture);
     }
 
     /**
@@ -38,17 +36,16 @@ class AdresseController extends Controller
      */
     public function store(Request $request)
     {
-       $adresse = new Adresse();
 
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->s ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
+        $dishpicture = new Dishpicture();
+        $dishpicture->dish_id = $request->dish_id ;
+        $dishpicture->picturepath =  $request->picturepath ;
+        $dishpicture->save();
 
-      $adresse->save();
+        return response()->json();
 
     }
+
     /**
      * Display the specified resource.
      *
@@ -81,15 +78,13 @@ class AdresseController extends Controller
     public function update(Request $request, $id)
     {
         
-       $adresse =  Adresse::find($id);
-       $adresse->adresse1 = $request->adresse1 ;
-       $adresse->adresse2 = $request->adresse2 ;
-       $adresse->country = $request->country ;
-       $adresse->postalcode = $request->postalcode ;
-       $adresse->city = $request->city ;
+        $dishpicture =  Dishpicture::find($id);
 
-      $adresse->save();
-      return response()->json($adresse);
+        $dishpicture->dish_id = $request->dish_id ;
+        $dishpicture->picturepath =  $request->picturepath ;
+        $dishpicture->save();
+        
+        return response()->json();
     }
 
     /**
@@ -100,10 +95,10 @@ class AdresseController extends Controller
      */
     public function destroy($id)
     {
-         $adresse = Adresse::find($id) ;  
-         $adresse->delete();
+         $dishpicture = Dishpicture::find($id) ;  
+         $dishpicture->delete();
 
         // On retourne la réponse JSON
-         return response()->json();
+       return response()->json();
     }
 }

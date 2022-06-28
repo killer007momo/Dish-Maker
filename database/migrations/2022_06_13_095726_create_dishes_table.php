@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('price');
             $table->boolean('ondemand');
             $table->string('labels');
+             $table->Date('deliverytimestamp');
             $table->unsignedBigInteger('holiday_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
            
