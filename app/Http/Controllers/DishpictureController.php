@@ -36,14 +36,16 @@ class DishpictureController extends Controller
      */
     public function store(Request $request)
     {
-
+        $dishpicture  =  Dishpicture::create($request->all());
+         return response()->json(null,202);
+        /*
         $dishpicture = new Dishpicture();
         $dishpicture->dish_id = $request->dish_id ;
         $dishpicture->picturepath =  $request->picturepath ;
         $dishpicture->save();
 
         return response()->json();
-
+        */
     }
 
     /**
@@ -77,7 +79,10 @@ class DishpictureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+         $dishpicture =  Dishpicture::find($id);
+        $dishpicture->update($request->all());
+         return response()->json(null,202);
+        /*
         $dishpicture =  Dishpicture::find($id);
 
         $dishpicture->dish_id = $request->dish_id ;
@@ -85,6 +90,7 @@ class DishpictureController extends Controller
         $dishpicture->save();
         
         return response()->json();
+        */
     }
 
     /**

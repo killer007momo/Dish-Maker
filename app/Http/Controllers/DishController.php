@@ -35,6 +35,9 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $dish  =  Dish::create($request->all());
+         return response()->json(null,202);
+        /*
         $dish = new Dish();
         $dish->description = $request->description ;
         $dish->options =  $request->options ;
@@ -52,6 +55,8 @@ class DishController extends Controller
         return response()->json();
         dd($dish);
        // On retourne les informations du nouvel utilisateur en JSON
+
+       */
     }
 
     /**
@@ -85,6 +90,10 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $dish =  Dish::find($id);
+        $dish->update($request->all());
+        return response()->json(null,202);
+        /*
         $dish = Dish::find($id);
 
         $dish->description = $request->description ;
@@ -99,8 +108,8 @@ class DishController extends Controller
        
 
         $dish->save();
-          return response()->json();
-
+        return response()->json();
+    */
     }
 
     /**

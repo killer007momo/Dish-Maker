@@ -35,11 +35,14 @@ class MenuController extends Controller
      */
     public function create(Request $request)
     {
-         $menu = new Menu();
+         $menu  =  Menu::create($request->all());
+         return response()->json(null,202);
+        /* $menu = new Menu();
          $menu->nom = $request->nom ;
          $menu->description = $request->description ;
 
-         $menu->save();
+         $menu->save();*/
+
     }
 
     /**
@@ -84,12 +87,17 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
+       $menu =  Menu::find($id);
+        $menu->update($request->all());
+         return response()->json(null,202);
+     /*
         $menu = Menu::find($id);
         $menu->nom = $request->nom ;
         $menu->description = $request->description ;
         
         $menu->save();
         return response()->json();
+        */
     }
 
     /**

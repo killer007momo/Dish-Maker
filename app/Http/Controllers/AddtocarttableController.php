@@ -36,6 +36,9 @@ class AddtocarttableController extends Controller
      */
     public function store(Request $request)
     {
+        $addtocarttable  =  Addtocarttable::create($request->all());
+        return response()->json(null,202);
+        /*
        $addtocarttable = new Addtocarttable();
       
        $addtocarttable->dish_id = $request->dish_id ;
@@ -45,7 +48,7 @@ class AddtocarttableController extends Controller
 
       $addtocarttable->save();
        return response()->json();
-
+    */
     }
 
     /**
@@ -79,6 +82,10 @@ class AddtocarttableController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $addtocarttable =  Addtocarttable::find($id);
+        $addtocarttable->update($request->all());
+         return response()->json(null,202);
+        /*
        $addtocarttable = Addtocarttable::find($id);
       
        $addtocarttable->dish_id = $request->dish_id ;
@@ -87,6 +94,7 @@ class AddtocarttableController extends Controller
 
        $addtocarttable->save();
         return response()->json();
+        */
     }
 
     /**

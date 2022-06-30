@@ -28,6 +28,9 @@ class HolidayController extends Controller
      */
     public function create(Request $request)
     {
+        $holiday  =  Holiday::create($request->all());
+         return response()->json(null,202);
+        /*
         $holiday = new Holiday();
 
         $holiday->nom = $request->nom ;
@@ -37,7 +40,7 @@ class HolidayController extends Controller
         $holiday->menu_id =  $request->menu_id ;
 
         $holiday->save();
-
+    */
 
     }
 
@@ -49,7 +52,9 @@ class HolidayController extends Controller
      */
     public function store(Request $request)
     {
-        
+         $holiday  =  Holiday::create($request->all());
+         return response()->json(null,202);
+        /* 
           $holiday = new Hdoliday();
         $holiday->description = $request->description ;
         $holiday->name =  $request->name ;
@@ -59,8 +64,8 @@ class HolidayController extends Controller
      
 
         $holiday->save();
-       
-        dd($holiday);
+       */
+    
     }
 
     /**
@@ -94,6 +99,10 @@ class HolidayController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $holiday =  Holiday::find($id);
+        $holiday->update($request->all());
+         return response()->json(null,202);
+        /*
         $holiday =  Hdoliday::find($id);
         $holiday->description = $request->description ;
         $holiday->name =  $request->name ;
@@ -104,7 +113,7 @@ class HolidayController extends Controller
 
         $holiday->save();
        
-        
+        */
     }
 
     /**

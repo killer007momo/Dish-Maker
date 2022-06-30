@@ -38,6 +38,9 @@ class AdresseController extends Controller
      */
     public function store(Request $request)
     {
+          $adresse  =  Adresse::create($request->all());
+          return response()->json(null,202);
+        /*
        $adresse = new Adresse();
 
        $adresse->adresse1 = $request->adresse1 ;
@@ -47,7 +50,7 @@ class AdresseController extends Controller
        $adresse->city = $request->city ;
 
       $adresse->save();
-
+    */
     }
     /**
      * Display the specified resource.
@@ -80,7 +83,10 @@ class AdresseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $adresse =  Adresse::find($id);
+        $adresse->update($request->all());
+         return response()->json(null,202);
+        /*
        $adresse =  Adresse::find($id);
        $adresse->adresse1 = $request->adresse1 ;
        $adresse->adresse2 = $request->adresse2 ;
@@ -90,6 +96,7 @@ class AdresseController extends Controller
 
       $adresse->save();
       return response()->json($adresse);
+      */
     }
 
     /**

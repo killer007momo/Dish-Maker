@@ -37,7 +37,9 @@ class DeliverychoicesController extends Controller
      */
     public function store(Request $request)
     {
-       
+         $deliverychoice  =  Deliverychoices::create($request->all());
+         return response()->json(null,202);
+       /*
         $deliverychoice = new Deliverychoices();
 
         $deliverychoice->dish_id = $request->dish_id ;
@@ -48,6 +50,7 @@ class DeliverychoicesController extends Controller
         return response()->json();
        // dd($deliverychoice);
        // On retourne les informations du nouvel utilisateur en JSON
+       */
     }
 
     /**
@@ -81,6 +84,10 @@ class DeliverychoicesController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $deliverychoice =  Deliverychoices::find($id);
+        $deliverychoice->update($request->all());
+        return response()->json(null,202);
+        /*
          $deliverychoice = Deliverychoices::find($id);
 
         $deliverychoice->dish_id = $request->dish_id ;
@@ -88,6 +95,7 @@ class DeliverychoicesController extends Controller
 
         $deliverychoice->save();
         return response()->json();
+        */
     }
 
     /**

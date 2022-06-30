@@ -46,11 +46,16 @@ class PlatController extends Controller
      */
     public function store(Request $request)
     {
-        $plat = new Plat();
+       
+        $plat  =  Plat::create($request->all());
+        return response()->json(null,202);
+       
+        /*
         $plat->menu_id = $request->menu_id ;
         $plat->user_id = $request->user_id ;
         $user->save();
-        return response()->json();
+        */
+        
     }
 
     /**
@@ -85,9 +90,12 @@ class PlatController extends Controller
     public function update(Request $request, $id)
     {
         $plat =  Plat::find($id);
+        $plat->update($request->all());
+         /*
         $plat->menu_id = $request->menu_id ;
         $plat->user_id = $request->user_id ;
         $user->save();
+        */
         return response()->json();
     }
 
