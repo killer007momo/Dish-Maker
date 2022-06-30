@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
+    
             $table->id();
             $table->Date('lastmodificationdate');
             $table->string('userid');

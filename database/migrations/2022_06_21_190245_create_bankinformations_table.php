@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('bankinformations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('userprofileid')->nullable();
+            $table->string('iban');
+            $table->string('nomprenomouraisonsociale');
             $table->timestamps();
+            $table->foreign('userprofileid')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

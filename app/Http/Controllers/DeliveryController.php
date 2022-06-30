@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App/Models/delivery;
 
 class DeliveryController extends Controller
 {
@@ -13,7 +14,8 @@ class DeliveryController extends Controller
      */
     public function index()
     {
-        //
+        $delivery = delivery::all();
+        return response()->json($delivery);
     }
 
     /**
@@ -34,7 +36,8 @@ class DeliveryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $delivery  =  delivery::create($request->all());
+         return response()->json(null,202);
     }
 
     /**
@@ -68,7 +71,9 @@ class DeliveryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $delivery =  delivery::find($id);
+        $delivery->update($request->all());
+        return response()->json(null,202);
     }
 
     /**
@@ -79,6 +84,10 @@ class DeliveryController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $delivery = delivery::find($id) ;  
+         $delivery->delete();
+
+        // On retourne la réponse JSON
+       return response()->json();
     }
 }

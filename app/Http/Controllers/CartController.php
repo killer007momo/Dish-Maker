@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App/Models/cart;
 class CartController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $cart = cart::all();
+        return response()->json($cart);
     }
 
     /**
@@ -34,7 +35,8 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $cart  =  cart::create($request->all());
+         return response()->json(null,202);
     }
 
     /**
@@ -68,7 +70,9 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $cart =  cart::find($id);
+        $cart->update($request->all());
+        return response()->json(null,202);
     }
 
     /**
@@ -79,6 +83,10 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $cart = cart::find($id) ;  
+         $cart->delete();
+
+        // On retourne la réponse JSON
+       return response()->json();
     }
 }

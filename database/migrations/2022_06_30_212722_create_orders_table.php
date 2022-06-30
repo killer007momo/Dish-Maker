@@ -14,9 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            
-            $table->timestamps();
+             $table->id();
+
+
+             $table->unsignedBigInteger('tookordertableid')->nullable();
+             $table->float('tvaoncommission');
+             $table->string('type');
+             $table->timestamps();
+
+             $table->foreign('tookordertableid')->references('id')->on('tookordertables')->onDelete('cascade');
         });
     }
 

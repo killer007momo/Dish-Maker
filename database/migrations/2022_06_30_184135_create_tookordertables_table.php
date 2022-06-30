@@ -16,16 +16,16 @@ return new class extends Migration
         Schema::create('tookordertables', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cart_id');
-            $table->unsignedBigInteger('order_id');
-            $table->float('advance');
-            $table->float('comissionprice');
-            $table->float('totalht');
-            $table->float('tva');
-            $table->float('orderdate');
+           
+            $table->string('advance');
+            $table->string('comissionprice');
+            $table->string('totalht');
+            $table->string('tva');
+            $table->string('orderdate');
             $table->timestamps();
 
             $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+         
         });
     }
 

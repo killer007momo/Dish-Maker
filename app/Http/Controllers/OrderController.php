@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App/Models/order;
 
 class OrderController extends Controller
 {
@@ -13,7 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $order = order::all();
+       
+        return response()->json($order);
     }
 
     /**
@@ -34,7 +37,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $order  =  order::create($request->all());
+        return response()->json(null,202);
     }
 
     /**
@@ -68,7 +72,9 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $order =  order::find($id);
+        $plat->update($request->all());
+        return response()->json();
     }
 
     /**
@@ -79,6 +85,10 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = order::find($id) ;  
+        $order->delete();
+
+        // On retourne la réponse JSON
+        return response()->json();
     }
 }
