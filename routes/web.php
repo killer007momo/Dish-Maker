@@ -30,11 +30,7 @@ Route::get('/', function () {
 
 //Route::get("users",APIUserController::class); // Les routes "users.*" de l'API
 
-Route::get("users/show",[UserController::class,'index'])->name('index');
-Route::get("users/show/{id}",[UserController::class,'index_id'])->name('index_id');
-Route::get("users/destroy/{user}",[UserController::class,'destroy'])->name('destroy');
-Route::get("users/create",[UserController::class,'store'])->name('store');
-Route::put("users/update/{id}",[UserController::class,'update'])->name('update');
+
 
 
 Route::post("adresse/create",[AdresseController::class,'store'])->name('adresse.store');

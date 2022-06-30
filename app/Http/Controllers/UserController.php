@@ -49,6 +49,9 @@ class UserController extends Controller
     public function store(Request $request)
   
     {
+         $user  =  User::create($request->all());
+          return response()->json(null,202);
+        /*
         $user = new User();
         $user->name = $request->name ;
         $user->email =  $request->email ;
@@ -62,7 +65,10 @@ class UserController extends Controller
        // On crée un nouvel utilisateur
         dd($user);
        // On retourne les informations du nouvel utilisateur en JSON
+        *
         
+        */
+
     }
 
     /**
@@ -90,9 +96,9 @@ class UserController extends Controller
     {
          // La validation de données
         $user = User::find($id) ;
-            
+        $user->update($request->all());
         // On modifie les informations de l'utilisateur
-        $user->name = $request->name ;
+       /* $user->name = $request->name ;
         $user->email =  $request->email ;
         $user->phone = $request->phone ;
         $user->sexe =  $request->sexe ;
@@ -100,8 +106,9 @@ class UserController extends Controller
         $user->password =  bcrypt($request->password) ;
 
         $user->save();
+        */
         // On retourne la réponse JSON
-        return response()->json();
+        return response()->json(null,202);
     }
 
     /**
@@ -115,9 +122,9 @@ class UserController extends Controller
          // On supprime l'utilisateur
        $user = User::find($id) ;  
        $user->delete();
-
+     //  dd($id);
         // On retourne la réponse JSON
-       return response()->json();
+       return response(null,204);
 
     }
 }
