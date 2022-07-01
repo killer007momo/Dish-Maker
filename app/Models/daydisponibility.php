@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class daydisponibility extends Model
 {
     use HasFactory;
+      protected $fillable = ['day','instantcookingdisponibilitiesid'] ;
+     
 }

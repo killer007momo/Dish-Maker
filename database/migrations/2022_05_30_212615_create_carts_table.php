@@ -17,9 +17,8 @@ return new class extends Migration
     
             $table->id();
             $table->Date('lastmodificationdate');
-            $table->string('userid');
+            $table->string('userid'); 
             $table->timestamps();
-
         });
     }
 

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Bankinformation extends Model
 {
     use HasFactory;
+    
+    protected $fillable = ['userprofileid','iban','nomprenomouraisonsociale'] ;
+   
+
 }
