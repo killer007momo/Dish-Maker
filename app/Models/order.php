@@ -9,7 +9,7 @@ class order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tookordertableid','tvaoncommission','type']   ;
+    protected $fillable = ['tookordertableid'];
     
 
 

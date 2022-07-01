@@ -18,8 +18,6 @@ return new class extends Migration
 
 
              $table->unsignedBigInteger('tookordertableid')->nullable();
-             $table->float('tvaoncommission');
-             $table->string('type');
              $table->timestamps();
 
              $table->foreign('tookordertableid')->references('id')->on('tookordertables')->onDelete('cascade');
