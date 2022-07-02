@@ -2,7 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\APIUserController ;
 use App\Http\Controllers\UserController ;
+use App\Http\Controllers\AdresseController ;
+use App\Http\Controllers\MenuController ;
+use App\Http\Controllers\HolidayController ;
+use App\Http\Controllers\DishpictureController ;
+use App\Http\Controllers\DishController ;
+use App\Http\Controllers\DeliverychoicesController ;
+use App\Http\Controllers\AddtocarttableController ;
+use App\Http\Controllers\PlatController ;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,8 +45,8 @@ Route::delete("adresse/destroy/{id}",[AdresseController::class,'destroy'])->name
 
 Route::post("menu/create",[MenuController::class,'store'])->name('menu.store');
 Route::get("menu/show",[MenuController::class,'index'])->name('menu.index');
-Route::put("menu/update/{id}",[AdresseController::class,'update'])->name('adresse.update');
-Route::delete("menu/destroy/{id}",[AdresseController::class,'destroy'])->name('adresse.destroy');
+Route::put("menu/update/{id}",[MenuController::class,'update'])->name('adresse.update');
+Route::delete("menu/destroy/{id}",[MenuController::class,'destroy'])->name('adresse.destroy');
 
 
 Route::post("plat/create",[PlatController::class,'store'])->name('plat.store');

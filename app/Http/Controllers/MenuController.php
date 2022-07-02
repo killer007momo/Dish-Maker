@@ -53,7 +53,8 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-          //
+           $menu  =  Menu::create($request->all());
+         return response()->json(null,202);
     }
 
     /**

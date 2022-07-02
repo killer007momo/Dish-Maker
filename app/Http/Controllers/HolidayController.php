@@ -3,16 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App/Models/Holiday;
+use App\Models\Holiday;
 
 
 class HolidayController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
          $holidays = Holiday::all();
@@ -30,19 +25,8 @@ class HolidayController extends Controller
     {
         $holiday  =  Holiday::create($request->all());
          return response()->json(null,202);
-        /*
-        $holiday = new Holiday();
-
-        $holiday->nom = $request->nom ;
-        $holiday->description = $request->description ;
-        $holiday->datedebut = $request->datedebut ;
-        $holiday->datefin =  $request->datefin ;
-        $holiday->menu_id =  $request->menu_id ;
-
-        $holiday->save();
-    */
-
-    }
+     
+ }
 
     /**
      * Store a newly created resource in storage.
@@ -54,17 +38,8 @@ class HolidayController extends Controller
     {
          $holiday  =  Holiday::create($request->all());
          return response()->json(null,202);
-        /* 
-          $holiday = new Hdoliday();
-        $holiday->description = $request->description ;
-        $holiday->name =  $request->name ;
-        $holiday->datedebut = $request->datedebut ;
-        $holiday->datedefin =  $request->datedefin ;
-        $holiday->menu_id = 1 ;
-     
 
-        $holiday->save();
-       */
+
     
     }
 

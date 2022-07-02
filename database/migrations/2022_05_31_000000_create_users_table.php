@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('sexe')->nullable();
             $table->unsignedBigInteger('adresse_id')->nullable();
             $table->string('phone')->unique();
-            
+        
             $table->rememberToken();
             $table->timestamps();
 
