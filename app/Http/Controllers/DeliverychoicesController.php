@@ -84,7 +84,7 @@ class DeliverychoicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $deliverychoice =  Deliverychoices::find($id);
+        $deliverychoice =  Deliverychoices::find($id);
         $deliverychoice->update($request->all());
         return response()->json(null,202);
         /*

@@ -13,6 +13,7 @@ use App\Http\Controllers\DishController ;
 use App\Http\Controllers\DeliverychoicesController ;
 use App\Http\Controllers\AddtocarttableController ;
 use App\Http\Controllers\PlatController ;
+use App\Http\Controllers\CartController ;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,8 +46,8 @@ Route::delete("adresse/destroy/{id}",[AdresseController::class,'destroy'])->name
 
 Route::post("menu/create",[MenuController::class,'store'])->name('menu.store');
 Route::get("menu/show",[MenuController::class,'index'])->name('menu.index');
-Route::put("menu/update/{id}",[MenuController::class,'update'])->name('adresse.update');
-Route::delete("menu/destroy/{id}",[MenuController::class,'destroy'])->name('adresse.destroy');
+Route::put("menu/update/{id}",[MenuController::class,'update'])->name('menu.update');
+Route::delete("menu/destroy/{id}",[MenuController::class,'destroy'])->name('menu.destroy');
 
 
 Route::post("plat/create",[PlatController::class,'store'])->name('plat.store');
@@ -63,8 +64,8 @@ Route::delete("holiday/destroy/{id}",[HolidayController::class,'destroy'])->name
 
 Route::post("addtocarttable/create",[AddtocarttableController::class,'store'])->name('addtocarttable.store');
 Route::get("addtocarttable/show",[AddtocarttableController::class,'index'])->name('addtocarttable.index');
-Route::put("addtocarttable/update/{id}",[AddtocarttableController::class,'update'])->name('plat.update');
-Route::delete("addtocarttable/destroy/{id}",[AddtocarttableController::class,'destroy'])->name('plat.destroy');
+Route::put("addtocarttable/update/{id}",[AddtocarttableController::class,'update'])->name('addtocarttable.update');
+Route::delete("addtocarttable/destroy/{id}",[AddtocarttableController::class,'destroy'])->name('addtocarttable.destroy');
 
 
 Route::post("deliverychoices/create",[DeliverychoicesController::class,'store'])->name('deliverychoices.store');
@@ -82,3 +83,9 @@ Route::post("dishpicture/create",[DishpictureController::class,'store'])->name('
 Route::get("dishpicture/show",[DishpictureController::class,'index'])->name('dishpicture.index');
 Route::put("dishpicture/update/{id}",[DishpictureController::class,'update'])->name('dishpicture.update');
 Route::delete("dishpicture/destroy/{id}",[DishpictureController::class,'destroy'])->name('dishpicture.destroy');
+
+Route::get("cart/show",[CartController::class,'index'])->name('cart.index');
+Route::get("cart/show/{id}",[CartController::class,'index_id'])->name('cart.index_id');
+Route::delete("cart/destroy/{user}",[CartController::class,'cart.destroy']);
+Route::post("cart/create",[CartController::class,'store'])->name('cart.store');
+Route::put("cart/update/{id}",[CartController::class,'update'])->name('cart.update');

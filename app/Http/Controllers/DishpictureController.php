@@ -79,7 +79,7 @@ class DishpictureController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $dishpicture =  Dishpicture::find($id);
+        $dishpicture =  Dishpicture::find($id);
         $dishpicture->update($request->all());
          return response()->json(null,202);
         /*
